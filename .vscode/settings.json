@@ -1,0 +1,10 @@
+{
+    "license.author": "Nicolò Rinaldi",
+    "license.year": "auto",
+    "license.extension": ".md",
+    "files.associations": {
+        "stdio.h": "c",
+        "cutils.h": "c",
+        "string.h": "c"
+    }
+}
