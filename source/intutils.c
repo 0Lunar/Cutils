@@ -38,7 +38,7 @@ void swap(int32_t* a, int32_t* b) {
 }
 
 
-void int_reverse(int32_t* num, size_t len) {
+void int_reverseArray(int32_t* num, size_t len) {
     if (num == NULL) return;
 
     int32_t tmp;
@@ -52,4 +52,19 @@ void int_reverse(int32_t* num, size_t len) {
         num[p] =  num[len];
         num[len] = tmp;
     }
+}
+
+
+int32_t int_reverse(int32_t num) {
+    int32_t ans;
+
+    while (num != 0) {
+        ans += num%10;
+        
+        if (num/10 > 0) ans *= 10;
+
+        num /= 10;
+    }
+
+    return ans;
 }
