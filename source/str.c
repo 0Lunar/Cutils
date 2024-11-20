@@ -17,6 +17,8 @@ string str_uppercase(string str) {
 
     upper = (string)malloc(sizeof(char) * strlen(str) + 1);
 
+    if (!upper) return NULL;
+
     for (i = 0; str[i] != '\0'; i++) {
         if (str[i] >= 'a' && str[i] <= 'z')
             upper[i] = 'A' + (str[i] - 'a');
@@ -32,6 +34,8 @@ string str_lowercase(string str) {
     int i;
 
     lower = (string)malloc(sizeof(char) * strlen(str) + 1);
+
+    if (!lower) return NULL;
 
     for (i = 0; str[i] != '\0'; i++) {
         if (str[i] >= 'A' && str[i] <= 'Z')
@@ -109,6 +113,8 @@ string str_strip(string str) {
 
     stripped = (string)malloc(sizeof(char) * strlen(str) + 1);
 
+    if (!stripped) return NULL;
+
     for (pointer = 0; str[pointer] == ' '; pointer++);
     
     for (i = 0 ; str[pointer] != '\0'; pointer++, i++) {
@@ -123,7 +129,7 @@ string str_strip(string str) {
 }
 
 
-bool str_strin(string str, string key) {
+bool str_isIn(string str, string key) {
     if (strlen(key) > strlen(str))
         return false;
     
@@ -156,5 +162,55 @@ void str_reverse(string str) {
         tmp = str[p];
         str[p] = str[len];
         str[len] = tmp;
+    }
+}
+
+
+void str_bubleSort_dec(string str, size_t len) {
+    if (!str) return;
+    if (len < 2) return;
+
+    bool changed = true;
+    uint32_t i = 0;
+    uint32_t pos = 0;
+
+    while (changed) {
+        changed = false;
+
+        for (i = pos; i < len-1; i++) {
+            if (str[i] > str[i+1]) {
+                char tmp = str[i];
+                str[i] = str[i+1];
+                str[i+1] = tmp;
+                changed = true;
+            }
+        }
+
+        pos++;
+    }
+}
+
+
+void str_bubleSort_inc(string str, size_t len) {
+    if (!str) return;
+    if (len < 2) return;
+
+    bool changed = true;
+    uint32_t i = 0;
+    uint32_t pos = 0;
+
+    while (changed) {
+        changed = false;
+
+        for (i = pos; i < len-1; i++) {
+            if (str[i] < str[i+1]) {
+                char tmp = str[i];
+                str[i] = str[i+1];
+                str[i+1] = tmp;
+                changed = true;
+            }
+        }
+
+        pos++;
     }
 }

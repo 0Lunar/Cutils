@@ -15,7 +15,9 @@ int32_t* sum(int32_t* nums, size_t len) {
     if (!nums) return NULL;
     if (len < 2) return NULL;
 
-    int* ans = (int32_t *)malloc(sizeof(int32_t) * len);
+    int32_t* ans = (int32_t *)malloc(sizeof(int32_t) * len);
+
+    if (!ans) return NULL;
 
     ans[0] = nums[0];
 
